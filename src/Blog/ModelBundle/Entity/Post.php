@@ -36,22 +36,13 @@ class Post extends Timestampable
      * @Assert\NotBlank
      */
     private $body;
-
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @var Author
+     * @ORM\ManyToOne(targetEntity="Author", inversedBy="post")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable = false)
+     * @Assert\NotBlank
      */
-    private $createdAt;
-
-    /**
-     * Construct
-     */
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
-
+    private $author;
     /**
      * Get id
      *

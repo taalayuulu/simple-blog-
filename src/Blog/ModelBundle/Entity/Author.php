@@ -2,6 +2,7 @@
 
 namespace Blog\ModelBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
@@ -29,7 +30,11 @@ class Author extends Timestampable
      */
     private $name;
 
-
+    private $posts;
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="author",cascade={"remove"})
+     */
 
 
 
