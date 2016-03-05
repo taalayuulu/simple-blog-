@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="Blog\ModelBundle\Repository\PostRepository")
  */
-class Post
+class Post extends Timestampable
 {
     /**
      * @var int
@@ -45,7 +45,7 @@ class Post
     private $createdAt;
 
     /**
-     * Construct  
+     * Construct
      */
     public function __construct()
     {
@@ -110,28 +110,6 @@ class Post
         return $this->body;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Post
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
 
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
 }
 
