@@ -30,12 +30,22 @@ class Author extends Timestampable
      */
     private $name;
 
-    private $posts;
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Post", mappedBy="author",cascade={"remove"})
      */
 
+    private $posts;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->posts = new ArrayCollection();
+    }
 
 
     /**
@@ -73,4 +83,3 @@ class Author extends Timestampable
     }
 
 }
-

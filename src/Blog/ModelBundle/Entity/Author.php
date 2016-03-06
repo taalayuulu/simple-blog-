@@ -82,4 +82,38 @@ class Author extends Timestampable
         return $this->name;
     }
 
+
+    /**
+     * Add post
+     *
+     * @param \Blog\ModelBundle\Entity\Post $post
+     *
+     * @return Author
+     */
+    public function addPost(\Blog\ModelBundle\Entity\Post $post)
+    {
+        $this->posts[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \Blog\ModelBundle\Entity\Post $post
+     */
+    public function removePost(\Blog\ModelBundle\Entity\Post $post)
+    {
+        $this->posts->removeElement($post);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
 }
