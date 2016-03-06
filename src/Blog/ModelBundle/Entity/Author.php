@@ -37,6 +37,15 @@ class Author extends Timestampable
 
     private $posts;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->posts = new ArrayCollection();
+    }
 
 
     /**

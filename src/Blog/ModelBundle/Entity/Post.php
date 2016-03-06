@@ -126,4 +126,6 @@ class Post extends Timestampable
     {
         return $this->author;
     }
+
+
 }
