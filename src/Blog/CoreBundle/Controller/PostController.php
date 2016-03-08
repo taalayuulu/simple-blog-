@@ -2,6 +2,7 @@
 
 namespace Blog\CoreBundle\Controller;
 
+use Blog\ModelBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -43,8 +44,10 @@ class PostController extends Controller
         {
             throw $this->createNotFoundException('Post was not found');
         }
+        $form = $this ->createForm(new CommentType());
         return array(
-          'post' => $post
+          'post' => $post,
+           'form' => $form->createView()
         );
     }
 
