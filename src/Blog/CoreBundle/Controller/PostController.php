@@ -15,8 +15,10 @@ class PostController extends Controller
     public function indexAction()
     {
         $posts = $this->getDoctrine()->getRepository('ModelBundle:Post')->findAll();
+         $latestPost = $this->getDoctrine()->getRepository('ModelBundle:Post')->findLatest(5);
         return $this->render('CoreBundle:Post:index.html.twig', array(
-            'post'=>$posts
+            'post'=>$posts,
+            'latestPost'=>$latestPost
         ));
     }
 
