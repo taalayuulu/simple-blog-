@@ -33,7 +33,11 @@ framework:
     fragments:       ~
     http_method_override: true
     assets: ~
-
+services:
+    twig.extension.text:
+         class: Twig_Extensions_Extension_Text
+         tags:
+             - { name: twig.extension  }
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
