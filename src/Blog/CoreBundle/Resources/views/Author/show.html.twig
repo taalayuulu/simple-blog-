@@ -10,5 +10,7 @@
 {% block section %}
   {% for post in post %}
       {{ include('CoreBundle:Post:_post.html.twig', {post: post}) }}
+      {% else %}
+       <p>{{ 'author.empty.post' }} This author didn't write any posts yet lan !</p>
  {% endfor %}
 {% endblock %}
