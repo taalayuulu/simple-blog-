@@ -27,4 +27,7 @@
      {% for comment in post.comments %}
          {{ include('CoreBundle:Post:_comment.html.twig', {comment: comment}) }}
      {% endfor %}
+
+    <h4>leave Comment</h4>
+    {{ form(form, {action: path('blog_core_post_createcomment',{slug: post.slug}) ~'#comments' }) }}
 {% endblock %}
