@@ -1,0 +1,25 @@
+{% extends 'CoreBundle:layout.html.twig' %}
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+{% block sidebar %}
+    <aside>
+        <h3></h3>
+        <p>
+            <a href="#">{{ post.author.name }}</a>
+        </p>
+    </aside>
+{% endblock %}
+{% block section  %}
+    <article class="post">
+        <header>
+            <h1>  {{ post.title }}</h1>
+            <p>
+                {{ 'post.on' }} <time datetime="{{ post.createdAt |date('c') }}">{{ post.createdAt |date  }}</time>
+            </p>
+        </header>
+        <p>
+            {{ post.body |nl2br }}
+        </p>
+    </article>
+{% endblock %}
