@@ -1,7 +1,14 @@
-{% extends "::base.html.twig" %}
+{% extends "CoreBundle::layout.html.twig" %}
 
-{% block title %}CoreBundle:Author:show{% endblock %}
-
-{% block body %}
-<h1>Welcome to the Author:show page</h1>
+{% block title %}Post By author {{ author.name }}{% endblock %}
+{% block sidebar %}
+    <aside>
+        <h3>Posted By </h3>
+        <p>{{ author.name }}</p>
+    </aside>
+{% endblock %}
+{% block section %}
+  {% for posts in posts %}
+      {{ include('CoreBundle:Post:_post.html.twig', {post: post}) }}
+ {% endfor %}
 {% endblock %}
