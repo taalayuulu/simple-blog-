@@ -2,6 +2,7 @@
 
 namespace Blog\CoreBundle\Controller;
 
+use Blog\ModelBundle\Entity\Comment;
 use Blog\ModelBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -57,12 +58,38 @@ class PostController extends Controller
      * Create Comment
      * @param Request $request
      * @param  string  $slug
+     * @throws NotFoundHttpException
+     * @return array
      * @Route("/{slug}/create-comment")
      * @Method("POST")
      * @Template("CoreBundle:Post:show.html.twig")
      */
     public function createCommentAction(Request $request , $slug)
     {
-       return array();
+        $post = $this->getDoctrine()->getRepository('ModelBundle:Post')->findOneBy(
+          array(
+              'slug'=>$slug
+          )
+        );
+        if (null === $post) {
+            throw $this->createNotFoundException('Post was not Found lan iyi back lan!');
+        }
+        $comment = new Comment();
+        $comment->setPost($post);
+        $form = $this->createForm(CommentType::class ,$comment);
+        $form->handleRequest($request);
+
+        if($form->isValid()) {
+            $this->getDoctrine()->getManager()->persist($comment);
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->get('session')->getFlashBag()->add('success','Your comment was submitted successfully ! лан бежердин я');
+            return $this->redirect($this->generateUrl('blog_core_post_show',array('slug'=>$post->getSlug())));
+        }
+
+        return array(
+            'post' => $post,
+            'form' => $form->createView()
+        );
     }
 }

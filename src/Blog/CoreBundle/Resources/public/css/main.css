@@ -73,11 +73,12 @@ footer {
     position: absolute;
     left:0;
     bottom:0;
-    height:80px;
+    height:50px;
     width:100%;
     border-top:1px solid #b5b5b5;
     padding:10px;
     font-size:13px;
+    margin-top: 45px;
 }
 a {
     color: #4f6e9f;
@@ -86,4 +87,27 @@ a:hover,
 a:active {
     color: #4f6e9f;
     text-decoration: underline;
+}
+p.session-message {
+    padding: 5px;
+    background-color: #007b00;
+    color: #fff;
+}
+form label
+{
+    display: block;
+    font-style: italic;
+
+}
+form input {
+    width:300px;
+
+}
+form textarea {
+    width: 500px;
+    height:150px;
+}
+form ul li {
+    list-style-type: none;
+    color:#ff0000;
 }
