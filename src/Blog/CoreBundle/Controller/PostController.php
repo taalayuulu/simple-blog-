@@ -12,10 +12,9 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        return array();
-        //return $this->render('CoreBundle:Post:index.html.twig', array(
+        return $this->render('CoreBundle:Post:index.html.twig', array(
             // ...
-        //));
+        ));
     }
 
 }

@@ -11,6 +11,7 @@ class PostControllerTest extends WebTestCase
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/');
+        $this->assertTrue($client->getResponse()->isSuccessful(),'The responce was not successfull ');
     }
 
 }
