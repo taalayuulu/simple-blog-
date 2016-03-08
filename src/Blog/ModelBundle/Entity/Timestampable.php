@@ -1,7 +1,10 @@
 <?php
 namespace Blog\ModelBundle\Entity;
+
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Timestampable abstract class to define created behavior
  * @ORM\MappedSuperclass
@@ -10,24 +13,22 @@ abstract class Timestampable
 {
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
-
     /**
-     * Construct
+     * @var \DateTime
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updated_at", type="datetime",nullable=true)
      */
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
+    private $updatedAt;
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
-     * @return Author
+     * @return Timestampable
      */
     public function setCreatedAt($createdAt)
     {
@@ -44,5 +45,30 @@ abstract class Timestampable
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Timestampable
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
