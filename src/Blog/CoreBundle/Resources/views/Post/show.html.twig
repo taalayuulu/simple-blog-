@@ -6,7 +6,7 @@
     <aside>
         <h3></h3>
         <p>
-            <a href="#">{{ post.author.name }}</a>
+            <a href="{{ path('blog_core_author_show', { slug: post.author.slug}) }}">{{ post.author.name }}</a>
         </p>
     </aside>
 {% endblock %}

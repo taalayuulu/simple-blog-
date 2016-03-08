@@ -5,7 +5,7 @@ namespace Blog\CoreBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * Class AuthorController
  */
@@ -32,14 +32,14 @@ class AuthorController extends Controller
         {
             throw $this->createNotFoundException('Author was not found man!');
         }
-        $posts = $this->getDoctrine()->getRepository('ModelBundle:Post')->findBy(
+        $post = $this->getDoctrine()->getRepository('ModelBundle:Post')->findBy(
           array(
               'author' => $author
           )
         );
         return array(
             'author' => $author,
-            'posts' => $posts
+            'post' => $post
         );
     }
 

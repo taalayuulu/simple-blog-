@@ -8,7 +8,7 @@
     </aside>
 {% endblock %}
 {% block section %}
-  {% for posts in posts %}
+  {% for post in post %}
       {{ include('CoreBundle:Post:_post.html.twig', {post: post}) }}
  {% endfor %}
 {% endblock %}
