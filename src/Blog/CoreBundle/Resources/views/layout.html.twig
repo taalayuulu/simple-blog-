@@ -2,3 +2,25 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('') }}">
 {% endblock %}
+{% block body %}
+    <header>
+
+
+    <p>Symfony2 Blog</p>
+    <nav>
+        <ul>
+            <li><a href="{{ path('#') }}">Home</a></li>
+        </ul>
+    </nav>
+    </header>
+    {% block sidebar %}
+    {% endblock %}
+<section>
+    {% block section  %}
+
+    {% endblock %}
+</section>
+<footer>
+    <p>&copy; {{ 'now'|date('Y') }}Symfony2 Blog </p>
+</footer>
+{% endblock %}
