@@ -1,0 +1,12 @@
+<article class="comment">
+    <header>
+        <p>
+            {{ on |capitalize }} <time datetime="{{ comment.createdAt | date('c') }}">{{ comment.createdAt }}</time>
+            <br>
+            {{ by | capitalize }} {{ comment.authorName }}
+        </p>
+    </header>
+    <p>
+        {{ comment.body | nl2br }}
+    </p>
+</article>
