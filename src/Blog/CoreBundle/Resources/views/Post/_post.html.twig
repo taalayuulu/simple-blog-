@@ -7,6 +7,13 @@
             <time datetime="{{ post.createdAt|date('c') }}">{{ post.createdAt | date }}</time>
             <br>
             by <a href="{{ path('blog_core_author_show' , { slug: post.author.slug }) }}">{{ post.author.name }}</a>
+            - <a href="{{ path('blog_core_post_show', { slug:post.slug}) }}#comments">
+                {% set count = post.comments | length %}
+                {# here I should to use like  {{ count  }} comentariev
+                if I want to show number of comment but I have to
+                set translater#}
+                {{ 'post.comments' |transchoice(count) }}
+            </a>
         </p>
     </header>
     <p>
