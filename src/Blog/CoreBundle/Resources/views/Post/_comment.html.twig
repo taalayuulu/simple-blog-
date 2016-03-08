@@ -1,9 +1,9 @@
 <article class="comment">
     <header>
         <p>
-            {{ on |capitalize }} <time datetime="{{ comment.createdAt | date('c') }}">{{ comment.createdAt }}</time>
+            {{ 'on' | capitalize }} <time datetime="{{ comment.createdAt | date('c') }}">{{ comment.createdAt |date }}</time>
             <br>
-            {{ by | capitalize }} {{ comment.authorName }}
+            {{ 'by' | capitalize }} {{ comment.authorName }}
         </p>
     </header>
     <p>

@@ -51,6 +51,12 @@ article header p {
     font-size: 14px;
     margin:0;
 }
+article.post {
+    margin-bottom:50px;
+}
+article.comment p {
+    margin-top:0;
+}
 aside {
     float: right;
     width: 160px;
