@@ -1,7 +1,11 @@
 {% extends "CoreBundle::layout.html.twig" %}
-
+{% block stylesheets %}
+{{ parent() }}
+{% endblock %}
 {% block title %}
-<title>Simple bloc</title>
+{% endblock %}
+{% block navbar %}
+{{ parent() }}
 {% endblock %}
 {% block sidebar %}
     <aside>
@@ -12,7 +16,13 @@
     </aside>
 {% endblock %}
 {% block section %}
+
+
 {% for post in post %}
     {{ include('CoreBundle:Post:_post.html.twig', {post: post}) }}
 {% endfor %}
+{% endblock %}
+{% block javascript %}
+{{ parent() }}
+
 {% endblock %}

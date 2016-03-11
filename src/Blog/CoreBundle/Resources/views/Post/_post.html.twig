@@ -1,22 +1,30 @@
-<article>
-    <header>
-   <h2><a href="{{ path('blog_core_post_show',{slug: post.slug}) }}">{{ post.title }}</a></h2>
-        <p>
-            Posted on:
-            <br>
-            <time datetime="{{ post.createdAt|date('c') }}">{{ post.createdAt | date }}</time>
-            <br>
-            by <a href="{{ path('blog_core_author_show' , { slug: post.author.slug }) }}">{{ post.author.name }}</a>
-            - <a href="{{ path('blog_core_post_show', { slug:post.slug}) }}#comments">
-                {% set count = post.comments | length %}
-                {# here I should to use like  {{ count  }} comentariev
-                if I want to show number of comment but I have to
-                set translater#}
-                {{ 'post.comments' |transchoice(count) }}
-            </a>
-        </p>
-    </header>
-    <p>
-      {{ post.body | truncate(400)}} <a href="{{ path('blog_core_post_show',{slug: post.slug}) }}">read more </a>
-    </p>
-</article>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-preview">
+
+                <h2 class="post-title">
+                    <a href="{{ path('blog_core_post_show',{slug: post.slug}) }}">{{ post.title }}</a>
+                </h2>
+
+            <h3 class="post-meta">
+                {{ post.body | truncate(250)}} <a href="{{ path('blog_core_post_show',{slug: post.slug}) }}">&raquo; more </a>
+            </h3>
+            <p class="post-meta"> Posted by <a href="{{ path('blog_core_author_show' , { slug: post.author.slug }) }}">{{ post.author.name }}</a> - <a href="{{ path('blog_core_post_show', { slug:post.slug}) }}#comments"> on <time datetime="{{ post.createdAt|date('c') }}">{{ post.createdAt | date }}</time>
+                    {% set count = post.comments | length %}
+                    {# here I should to use like  {{ count  }} comentariev
+                    if I want to show number of comment but I have to
+                    set translater#}
+                    {{ 'post.comments' |transchoice(count) }}
+            </p>
+        </div>
+        <hr>
+
+    </div>
+    <!-- Pager -->
+    <ul class="pager">
+        <li class="next">
+            <a href="#">Older Posts &rarr;</a>
+        </li>
+    </ul>
+</div>
+

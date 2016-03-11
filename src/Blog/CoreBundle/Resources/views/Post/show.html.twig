@@ -1,7 +1,13 @@
 {% extends 'CoreBundle:layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 {% block title %}
     {{ parent() }}
 {% endblock %}
+{% block navbar %}
+    {{ parent() }}
+ {% endblock %}
 {% block sidebar %}
     <aside>
         <h3></h3>
@@ -30,4 +36,7 @@
 
     <h4>leave Comment</h4>
     {{ form(form, {action: path('blog_core_post_createcomment',{slug: post.slug}) ~'#comments' }) }}
+{% endblock %}
+{% block javascript %}
+{{ parent() }}
 {% endblock %}

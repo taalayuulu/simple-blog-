@@ -1,19 +1,11 @@
 {% extends "::base.html.twig" %}
 {% block stylesheets %}
     <!-- this is the main styles-->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Clean Blog</title>
-
     <!-- Bootstrap Core CSS -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/core/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{{ asset('css/clean-blog.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/core/css/clean-blog.min.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -23,6 +15,7 @@
 {% endblock %}
 {% block body %}
     <header>
+        {% block navbar %}
       <!-- this is navbar section -->
         <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
             <div class="container-fluid">
@@ -44,13 +37,13 @@
                             <a href="{{ path('blog_core_post_index') }}">Home</a>
                         </li>
                         <li>
-                            <a href="{{ path('#') }}">About</a>
+                            <a href="{{ path('blog_core_post_index') }}">About</a>
                         </li>
                         <li>
-                            <a href="{{ path('#') }}">Sample Post</a>
+                            <a href="{{ path('blog_core_post_index') }}">Sample Post</a>
                         </li>
                         <li>
-                            <a href="{{ path('#') }}">Contact</a>
+                            <a href="{{ path('blog_core_post_index') }}">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -59,20 +52,83 @@
             <!-- /.container -->
         </nav>
       <!-- end of navbar section -->
+        {% endblock %}
+        <header class="intro-header" style="background-image: url('{{ asset('bundles/core/img/home-bg.jpg') }}')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <div class="site-heading">
+                            <h1>My first Blog </h1>
+                            <hr class="small">
+                            <span class="subheading">My first blog on Symfony</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
     </header>
-    {% block sidebar %}
-    {% endblock %}
-<section>
-    {% for type, messages in app.session.flashbag.all() %}
-        {% for message in messages %}
-            <p class="session-message">{{ message }}</p>
-        {% endfor %}
-    {% endfor %}
-    {% block section  %}
 
-    {% endblock %}
+<section>
+    <!-- Main Content -->
+    <div class="container">
+        {% block sidebar %}
+        {% endblock %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <p class="session-message">{{ message }}</p>
+            {% endfor %}
+        {% endfor %}
+        {% block section  %}
+
+        {% endblock %}
+
+    </div>
+
 </section>
 <footer>
-    <p>&copy; {{ 'now'|date('Y') }}Symfony2 Blog </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">&copy; {{ 'now'|date('Y') }}Symfony2 Blog </p>
+            </div>
+        </div>
+    </div>
+    {% block javascript %}
+        <script src="{{ asset('bundles/core/js/jquery.js') }}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset('bundles/core/js/bootstrap.min.js') }}"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="{{ asset('bundles/conre/js/clean-blog.min.js') }}"></script>
+    {% endblock %}
+
 </footer>
+
 {% endblock %}
