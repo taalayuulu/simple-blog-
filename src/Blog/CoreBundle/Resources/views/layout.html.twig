@@ -37,7 +37,7 @@
                             <a href="{{ path('blog_core_post_index') }}">Home</a>
                         </li>
                         <li>
-                            <a href="{{ path('blog_core_post_index') }}">About</a>
+                            <a href="{{ path('blog_core_post_about') }}">About</a>
                         </li>
                         <li>
                             <a href="{{ path('blog_core_post_index') }}">Sample Post</a>
@@ -86,6 +86,7 @@
 
 </section>
 <footer>
+    {% block footer %}
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -128,7 +129,7 @@
         <!-- Custom Theme JavaScript -->
         <script src="{{ asset('bundles/conre/js/clean-blog.min.js') }}"></script>
     {% endblock %}
-
+{% endblock %}
 </footer>
 
 {% endblock %}

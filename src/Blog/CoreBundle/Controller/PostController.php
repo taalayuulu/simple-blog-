@@ -27,7 +27,14 @@ class PostController extends Controller
             'latestPost'=>$latestPost
         ));
     }
-
+    /**
+     * @Route("/about")
+     * @Template()
+     */
+    public function aboutAction()
+    {
+        return $this->render('CoreBundle:Post:about.html.twig');
+    }
     /**
      * Show a post
      * @param string $slug
@@ -92,4 +99,5 @@ class PostController extends Controller
             'form' => $form->createView()
         );
     }
+
 }
