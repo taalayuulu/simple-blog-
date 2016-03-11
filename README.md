@@ -1,1 +1,1 @@
-This is my first blog created on symfony . All templates for this blog were used from [this repositori ](https://github.com/BlackrockDigital/startbootstrap-lean-blog)
+This is my first blog created on symfony . All templates for this blog were used from [this REPOSITORY ](https://github.com/BlackrockDigital/startbootstrap-lean-blog)
